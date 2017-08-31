@@ -1,0 +1,7 @@
+{
+  "name": "graphql-client-demo",
+  "short_name": "graphql-client-demo",
+  "description": "GraphQL Demo Client",
+  "start_url": "/",
+  "display": "standalone"
+}
