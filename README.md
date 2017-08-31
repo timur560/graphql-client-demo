@@ -1,5 +1,4 @@
 # GraphQL Demo Client
----------------------
 
 Article: (link will be here after publish)
 
