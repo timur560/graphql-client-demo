@@ -1,5 +1,8 @@
 import { PolymerApolloMixin } from 'polymer-apollo';
-import { apolloClient } from '../client.js';
+import { apolloClient } from '../client';
+// заимпортим все необходимые запросы
+// (пока что он у нас один)
+import { getUserInfoQuery } from '../models/user';
 
 class GraphqlClientDemoApp extends PolymerApolloMixin({ apolloClient }, Polymer.Element) {
 
@@ -12,6 +15,14 @@ class GraphqlClientDemoApp extends PolymerApolloMixin({ apolloClient }, Polymer.
                 value: 'GraphQL Client Demo'
             },
 
+            // ВАЖНО!!!
+            // постарайтесь хорошо запомнить,
+            // что имя property должно в 
+            // точности соответствовать названию
+            // корнегово поля запроса
+            // т.е. в данном случае наш запрос 
+            // будет выгдядеть так:
+            // query { user { ... } }
             user: {
                 type: Object,
                 value: {}
@@ -19,8 +30,21 @@ class GraphqlClientDemoApp extends PolymerApolloMixin({ apolloClient }, Polymer.
         };
     }
 
+    // ну а здесь и будут наши запросы
     get apollo() {
-        // Apollo specific options
+        return {
+            getUserInfo: {
+                // наш запрос, который мы
+                // заимпортили из моделей
+                // нужно понимать, что этот запрос
+                // дернется сразу же при инициализации
+                // компонента
+                // можно ли этого избежать, 
+                // я пока не разобрался
+                // разве что вызовом отдельной функции
+                query: getUserInfoQuery
+            }
+        };
     }
 }
 

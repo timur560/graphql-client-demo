@@ -1,11 +1,26 @@
 <dom-module id="graphql-client-demo-app">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[appName]]!</h2>
-  </template>
+	<template>
+		<style>
+		</style>
+		<!-- просто пример вывода property -->
+		<h1>[[appName]]</h1>
 
+		<!-- пытаемся подтянуть из того
+		что должно было вернутсья с сервера -->
+		<p><b>Name:</b> [[user.firstname]] [[user.lastname]]!</p>
+		<p><b>Created date:</b> [[user.createDate]]</p>
+		<h2>Addresses:</h2>
+		<table>
+			<!-- перебор массива -->
+			<template is="dom-repeat" items="{{user.addresses}}">
+				<!-- к несчастью в этом примере
+				только одно поле, но ведь мы понимаем,
+				что их может быть больше -->
+				<tr>
+					<td>{{index}}</td>
+					<td>{{item.city.name}}</td>
+				</tr>
+			</template>
+		</table>
+	</template>
 </dom-module>
