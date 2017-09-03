@@ -11,9 +11,33 @@ export const getUserInfoQuery = gql`
             lastname
             createDate(format: "d M, H:i")
             addresses {
+                zip
+                street
                 city {
                     name
                 }
+            }
+        }
+    }
+`;
+
+// не забываем присваивать алиасы
+// мутациям они тоже необходимы
+export const updateAddressAndUserMutation = gql`
+    mutation updateAddressAndUser(
+        $id: Int!, 
+        $zip: String, 
+        $street: String, 
+        $firstname: String, 
+        $lastname: String
+    ) {
+        address(id: $id) {
+            update(zip: $zip, street: $street)
+            user {
+                update(
+                    firstname: $firstname, 
+                    lastname: $lastname
+                )
             }
         }
     }

@@ -1,0 +1,14 @@
+<dom-module id="update-address-user">
+    <template>
+        <!-- поля со свойствами из компонента
+        (работают в обе стороны) -->
+        ZIP Code: <input value="{{zip::input}}"><br>
+        Street: <input value="{{street::input}}"><br>
+        First Name: <input value="{{firstname::input}}"><br>
+        Last Name: <input value="{{lastname::input}}"><br>
+
+        <!-- по нажатию на кнопку шлём данные
+        на сервер -->
+        <button on-click="_sendAddressUserMutation">Send</button>
+    </template>
+</dom-module>

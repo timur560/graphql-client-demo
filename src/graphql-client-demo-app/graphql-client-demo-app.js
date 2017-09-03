@@ -8,6 +8,13 @@ class GraphqlClientDemoApp extends PolymerApolloMixin({ apolloClient }, Polymer.
 
     static get is() { return 'graphql-client-demo-app'; }
 
+    // добавим eventListener для 
+    // внешних компонентов
+    ready() {
+        super.ready();
+        this.addEventListener('refetch', e => this._refetch(e));
+    }
+
     static get properties() {
         return {
             appName: {
@@ -45,6 +52,11 @@ class GraphqlClientDemoApp extends PolymerApolloMixin({ apolloClient }, Polymer.
                 query: getUserInfoQuery
             }
         };
+    }
+
+    // метод для обновления данных сервера
+    _refetch() {
+        this.$apollo.refetch('getUserInfo');
     }
 }
 
