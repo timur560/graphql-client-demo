@@ -1,6 +1,6 @@
 # GraphQL Demo Client
 
-Article: (link will be here after publish)
+Article: https://habrahabr.ru/post/337044/
 
 ## Install and run the webpack
 
